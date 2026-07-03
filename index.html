@@ -590,6 +590,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-underline-offset: 2px;
   }
 
+  /* Hide the step footer while the industry search sheet is open */
+  body.combo-open #beehive-form .footer-nav { display: none; }
+
   /* Terms checkbox row */
   .tc-row {
     display: flex;
@@ -2103,6 +2106,8 @@ const Combobox = ({ value, onChange, options, placeholder = 'Search...', trigger
 
   useEffect(() => {
     if (open && inputRef.current) inputRef.current.focus();
+    document.body.classList.toggle('combo-open', open);
+    return () => document.body.classList.remove('combo-open');
   }, [open]);
 
   const filtered = useMemo(() => {
