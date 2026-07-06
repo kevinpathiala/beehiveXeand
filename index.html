@@ -2233,7 +2233,7 @@ const fmtMoneyForCountry = (aedValue, data) => {
 const StepAge = ({ data, set, next }) => (
   <>
     <div className="eyebrow"><span className="eyebrow-dot" />About your business</div>
-    <h1 className="q-title">How long have you been trading?</h1>
+    <h1 className="q-title">How long has your business been operating?</h1>
     <p className="q-sub">Pick the range that fits. We'll get to specifics later.</p>
     <OptionGroup
       autoAdvance
@@ -2824,6 +2824,25 @@ const ResultScreen = ({ data, result, onRestart, onStartFresh }) => {
 };
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+// ── Auto-resize: tell the parent (Webflow) how tall the form is ──────────────
+// Eliminates the fixed-height iframe's double scrollbar + top cropping.
+(function reportHeight() {
+  const send = () => {
+    const h = document.getElementById('beehive-form')?.scrollHeight
+      || document.documentElement.scrollHeight;
+    window.parent.postMessage({ beehiveFormHeight: h }, '*');
+  };
+  // Fire on load, on any DOM/size change, and on resize.
+  window.addEventListener('load', send);
+  if (window.ResizeObserver) {
+    new ResizeObserver(send).observe(document.body);
+  }
+  new MutationObserver(send).observe(document.body, { childList: true, subtree: true, attributes: true });
+  window.addEventListener('resize', send);
+  setInterval(send, 500); // safety net for animated transitions
+  send();
+})();
 
   </script>
 
