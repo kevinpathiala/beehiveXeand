@@ -510,88 +510,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-bottom: 10px;
   }
 
-  /* e& sign-in (demo) */
-  .eand-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: var(--deep-ocean);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius-md);
-    padding: 16px 18px;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 200ms var(--ease-onward), box-shadow 200ms var(--ease-onward);
-  }
-  .eand-btn:hover:not(:disabled) {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(15,20,48,0.25);
-  }
-  .eand-btn:disabled { opacity: 0.7; cursor: default; }
-  .eand-mark {
-    display: inline-grid;
-    place-items: center;
-    width: 30px; height: 26px;
-    border-radius: 6px;
-    background: #fff;
-  }
-  .eand-mark.sm { width: 26px; height: 22px; }
-  .eand-logo-svg { height: 13px; width: auto; display: block; }
-  .eand-mark.sm .eand-logo-svg { height: 11px; }
-  .eand-hint {
-    font-size: 12px;
-    color: var(--text-faint);
-    text-align: center;
-    margin: 8px 0 0;
-  }
-  .eand-divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--text-faint);
-    font-size: 12px;
-    margin: 18px 0;
-  }
-  .eand-divider::before,
-  .eand-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-  .eand-linked {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 12px 14px;
-    margin-bottom: 18px;
-  }
-  .eand-linked-text {
-    flex: 1;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-  }
-  .eand-unlink {
-    background: transparent;
-    border: none;
-    color: var(--accent);
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
   /* Hide the step footer while the industry search sheet is open */
   body.combo-open #beehive-form .footer-nav { display: none; }
 
@@ -2347,17 +2265,8 @@ const StepNumbers = ({ data, set }) => {
   );
 };
 
-// e& brandmark (official asset)
-const EandLogo = ({ className }) => (
-  <svg className={className} viewBox="0 0 184 124" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="e&">
-    <path d="M167.217 55.5817H147.449C146.977 63.1848 145.456 70.9453 142.834 77.8144C140.265 84.631 136.962 90.6611 132.609 95.6424C126.16 103.036 117.928 107.86 108.542 107.86C97.4253 107.86 89.8221 103.088 86.9381 95.1705H65.8066C62.3459 103.403 54.2708 107.545 44.0459 107.545C32.8247 107.545 21.2888 99.4702 19.978 82.953H86.1516C87.8295 74.8255 94.2791 68.743 104.661 64.8103C104.661 64.8103 114.257 61.2447 123.8 57.2072C137.014 51.1247 146.872 40.2181 146.872 26.3751C146.872 6.76419 130.04 0 114.886 0C95.7473 0 81.5373 10.0676 81.5373 26.0605C81.5373 35.4464 86.676 44.3605 94.2267 53.2745C90.1891 54.6903 86.3613 56.5255 82.8482 58.7803C76.7656 41.9484 62.6605 30.9894 43.5739 30.9894C18.3524 30.9894 0 49.9711 0 76.6608C0 103.35 16.3599 123.853 44.8848 123.853C57.9937 123.853 67.904 119.081 74.7731 112.369C81.7995 119.501 92.2866 123.853 105.133 123.853C120.969 123.853 133.816 117.613 143.726 107.86L156.415 121.703H183.315L155.786 91.8671C162.236 80.6459 166.011 67.9565 167.322 55.5817H167.217ZM114.939 14.8393C122.175 14.8393 128.152 18.9292 128.152 27.0567C128.152 34.4502 123.695 41.7387 113.628 46.1957L113.471 46.0384C107.545 39.7986 101.935 32.51 101.935 25.5885C101.935 18.6671 108.017 14.8917 114.991 14.8917L114.939 14.8393ZM43.4691 46.353C55.0049 46.353 65.5969 54.7952 66.0688 68.6381H19.8731C21.4986 51.8063 34.2404 46.353 43.4691 46.353Z" fill="#E00800"></path>
-  </svg>
-);
-
 // ===== STEP: Contact =====
 const StepContact = ({ data, set, errors }) => {
-  const [linking, setLinking] = useState(false);
-  const [linked, setLinked] = useState(!!data.eandLinked);
   const codeOptions = [
     { value: '+971', label: '🇦🇪 +971' },
     { value: '+968', label: '🇴🇲 +968' },
@@ -2367,52 +2276,11 @@ const StepContact = ({ data, set, errors }) => {
     { value: '+1', label: '+1' },
   ];
 
-  // DEMO ONLY: simulates an e& sign-in and profile fetch, pre-filling the fields.
-  // Replace with a real OAuth redirect + token exchange handled by your backend.
-  const linkEand = () => {
-    setLinking(true);
-    setTimeout(() => {
-      set({
-        name: 'Ahmed Al Mansoori',
-        businessName: 'Mansoori Trading LLC',
-        email: 'ahmed@mansooritrading.ae',
-        phoneCode: '+971',
-        phone: '50 234 5678',
-        eandLinked: true,
-      });
-      setLinking(false);
-      setLinked(true);
-    }, 1300);
-  };
-
-  const unlink = () => {
-    setLinked(false);
-    set({ eandLinked: false });
-  };
-
   return (
     <>
       <div className="eyebrow"><span className="eyebrow-dot" />Almost there</div>
       <h1 className="q-title">Where should we send your result?</h1>
       <p className="q-sub">A Beehive advisor will reach out within one working day.</p>
-
-      {!linked ? (
-        <>
-          <button type="button" className="eand-btn" onClick={linkEand} disabled={linking}>
-            {linking
-              ? <><span className="spinner" /> Connecting to e&hellip;</>
-              : <>Continue with <span className="eand-mark"><EandLogo className="eand-logo-svg" /></span></>}
-          </button>
-          <p className="eand-hint">Sign in with your e&amp; business account to fill your details instantly.</p>
-          <div className="eand-divider"><span>or enter your details</span></div>
-        </>
-      ) : (
-        <div className="eand-linked">
-          <span className="eand-mark sm"><EandLogo className="eand-logo-svg" /></span>
-          <span className="eand-linked-text">Details filled from your e&amp; account</span>
-          <button type="button" className="eand-unlink" onClick={unlink}>Change</button>
-        </div>
-      )}
 
       <TextField label="Your name" value={data.name} onChange={(v) => set({ name: v })} placeholder="First and last name" error={errors.name} autoFocus />
       <TextField label="Business name" value={data.businessName} onChange={(v) => set({ businessName: v })} placeholder="Trading or legal name" error={errors.businessName} />
@@ -2548,7 +2416,7 @@ const saveCache = (data) => {
 const DEFAULT_DATA = {
   businessAge: '', sector: '', industry: '',
   revenue: 3_000_000, loanAmount: 500_000, revenueTouched: false, loanTouched: false,
-  name: '', businessName: '', email: '', phoneCode: '+971', phone: '', terms: false, eandLinked: false,
+  name: '', businessName: '', email: '', phoneCode: '+971', phone: '', terms: false,
 };
 
 // ============================================================================
